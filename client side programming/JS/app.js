@@ -1,0 +1,17 @@
+function validateForm() {
+    let x = document.forms["myForm"]["fname"].value;
+    if (x == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+}
+function myFunction() {
+    let x = document.getElementById("numb").value;
+    let text;
+    if (isNaN(x) || x < 1 || x > 10) {
+      text = "Input not valid";
+    } else {
+      text = "Input OK";
+    }
+    document.getElementById("demo").innerHTML = text;
+}

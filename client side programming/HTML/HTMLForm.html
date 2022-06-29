@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forms</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Your Profile</legend>
+            <label>Name <input type="text" placeholder="Enter your name" value="Ayush Wadhwa" required></label>
+            
+            <br><br>
+            
+            <label for="emailaddress">Email</label>
+            <input type="email" placeholder="Enter your email" id="emailaddess">
+            
+            <br><br>
+            
+            <label>Gender</label>
+            <label><input type="radio" name="gender">Male</label>
+            <input type="radio" name="gender" id="female">
+            <label for="female">female</label>
+            
+            <br><br>
+            
+            <Label>Hobbies</Label>
+            <label><input type="checkbox">Coding</label>
+            <input type="checkbox">Reading
+            <input type="checkbox">Anything other than coding!!!
+            
+            <br><br>
+            
+            <label for="age">Age</label>
+            <select id="age">
+                <option >"0-20"></option>
+                <option >"20-40"></option>
+                <option >"40-60"></option>
+                <option >"Ab toh umar gaye"></option>
+            </select>
+            
+            
+            <br><br>
+            
+            <label for="message">Message</label>
+            <textarea id="message" cols="20" rows="5"></textarea>
+            
+            <br><br>
+              
+            <input type="submit" value="Send this cool data!">
+            <input type="reset">
+        </fieldset>
+    </form>
+</body>
+</html>

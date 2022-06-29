@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+body{
+    margin: 40px;
+    font-family: Georgia, Times, serif;
+    color: #373737;
+}
+.border-box{
+    background: #FC3;
+/*    Margin between 2 boxes*/
+    margin: 0 0 20px;
+/*    Internal spacing*/
+    padding : 40px;
+    width : 320px;
+    text-align: center;
+}
+#box1{
+    border: solid 1px #333;
+}
+#box2{
+    border: dashed 1px #333;
+}
+#box3{
+    border: dotted 1px #333;
+}
+/*Minimum size requied to view thin double border is 3px ie 1 px for each border and 1px gap*/
+#box4{
+    border: double 3px #333;
+}
+#box5{
+    border: solid 4px #333;
+}
+#box6{
+    border: dashed 4px #333;
+}
+#box7{
+    border: dotted 4px #333;
+}
+/*Minimum size required to view thick double border is 6px*/
+#box8{
+    border: double 6px #333;
+}

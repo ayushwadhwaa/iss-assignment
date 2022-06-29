@@ -1,0 +1,119 @@
+CREATE DATABASE
+
+DROP DATABASE IF EXISTS `sql_invoicing`;
+CREATE DATABASE `sql_invoicing`; 
+USE `sql_invoicing`;
+
+CREATE TABLE
+
+CREATE TABLE `customers` (
+  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `birth_date` date DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `address` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` char(2) NOT NULL,
+  `points` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+SELECT:
+
+SELECT * FROM sql_hr.employees;
+
+
+WHERE:
+
+SELECT * from sql_hr.employees where sql_hr.employees.employee_id = 33391;
+
+SELECT * from customers where birth_date > '1990-01-01';
+
+
+OR 
+
+SELECT * from customers where birth_date > '1990-01-01' OR points > 1000;
+
+
+AND
+
+SELECT * from customers where points > 1000 AND state = "CA";
+
+
+ORDER BY
+
+SELECT * from customers ORDER BY state, first_name;
+
+LIKE
+
+SELECT * FROM `customers` WHERE last_name LIKE 'b%';
+
+
+IN
+
+SELECT * FROM `customers` WHERE STATE IN('VA','FL');
+
+
+BETWEEN 
+
+SELECT * from customers where points BETWEEN 1000 AND 3000;
+
+INSERT INTO
+
+INSERT INTO `customers` (`customer_id`, `first_name`, `last_name`, `birth_date`, `phone`, `address`, `city`, `state`, `points`) VALUES (NULL, 'John', 'Smith', '1998-06-01', NULL, 'address', 'city', 'CA', '0');
+
+
+UPDATE
+
+UPDATE `customers` SET `birth_date` = '1998-06-02' WHERE `customers`.`customer_id` = 12;
+
+
+DELETE
+
+DELETE FROM customers WHERE `customers`.`customer_id` = 12
+
+
+INNER JOIN
+
+SELECT order_id, c.customer_id, c.first_name, c.last_name, o.order_id FROM orders o JOIN customers c ON o.customer_id = c.customer_id ORDER BY c.customer_id;
+
+
+LEFT JOIN
+
+SELECT order_id, c.customer_id, c.first_name,o.order_id FROM customers c LEFT JOIN orders o ON o.customer_id = c.customer_id ORDER BY c.customer_id;
+
+RIGHT JOIN
+
+SELECT order_id, c.customer_id, c.first_name,o.order_id FROM orders o  RIGHT JOIN customers c ON o.customer_id = c.customer_id ORDER BY c.customer_id;
+
+UNION
+
+SELECT order_id, order_date, 'Active' AS status FROM `orders` WHERE order_date >='2019-01-01' UNION SELECT order_id, order_date, 'Archived' AS status FROM `orders` WHERE order_date <'2019-01-01'
+
+GROUP BY
+
+SELECT client_id, SUM(invoice_total) AS total_sales FROM invoices GROUP BY client_id; 
+
+HAVING
+
+SELECT client_id, SUM(invoice_total) AS total_sales FROM invoices GROUP BY client_id HAVING total_sales > 500; 
+
+IFNULL function 
+
+SELECT order_id, IFNULL(shipper_id, 'Not assigned') AS shipper FROM orders;
+
+VIEW
+
+CREATE VIEW sales_by_client AS SELECT c.client_id, c.name, SUM(invoice_total) FROM clients c JOIN invoices i USING (client_id) GROUP BY client_id, name
+
+STORED PROCEDURE
+
+DELIMITER $$ 
+CREATE PROCEDURE get_clients()
+BEGIN
+	SELECT * FROM clients;
+END $$
+DELIMITER ;
+
+
